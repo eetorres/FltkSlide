@@ -1,0 +1,54 @@
+# data file for the Fltk User Interface Designer (fluid)
+version 1.0302 
+header_name {.h} 
+code_name {.cxx}
+class fl_slide_win {open
+} {
+  Function {fl_slide_win()} {open selected
+  } {
+    Fl_Window slide_win {
+      label {Fl_Window - with Fl_Gl_Slide} open
+      xywh {232 44 613 640} type Double color 147 visible
+    } {
+      Fl_Button {} {
+        label Draw
+        callback {gl_slide->valid_data(1);
+gl_slide->redraw();}
+        xywh {5 5 110 20}
+      }
+      Fl_Button {} {
+        label Icono
+        callback {icono();}
+        xywh {120 5 110 20} down_box DOWN_BOX
+      }
+      Fl_Button {} {
+        label Close
+        callback {close();}
+        xywh {235 5 110 20}
+      }
+      Fl_Box gl_slide {
+        label Fl_Gl_Slide
+        xywh {6 32 600 600} box THIN_DOWN_BOX color 0 labelcolor 2
+        code0 {\#include"Fl_Gl_Slide.H"}
+        class Fl_Gl_Slide
+      }
+      Fl_Slider gl_zoom {
+        callback {gl_slide->Zoom((double)gl_zoom->value());
+gl_slide->redraw();}
+        xywh {350 4 255 20} type Horizontal step 0.01 value 1
+      }
+    }
+  }
+  Function {close()} {open
+  } {
+    code {slide_win->hide();} {}
+  }
+  Function {show()} {open
+  } {
+    code {slide_win->show();} {}
+  }
+  Function {icono()} {open
+  } {
+    code {slide_win->iconize();} {}
+  }
+} 

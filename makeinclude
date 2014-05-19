@@ -1,0 +1,22 @@
+# Edmanuel Torres 2005-2014
+
+CXX = g++
+
+PROG = wave_gui
+SCRS = $(PROG).cxx Fl_Slide.cxx Fl_Gl_Slide.cxx
+OBJS = $(SCRS:.cxx=.o)
+
+MDIR = $(shell sh -c pwd)
+
+OPTIM  = -O2 -Wall -Wno-deprecated
+LMATH = -lm
+#LX11R = -lGLU -lGL -lXft -lXinerama -lX11 -lXext
+LFLTK = $(shell fltk-config  --use-gl --ldstaticflags)
+
+CFLAGS = $(OPTIM) -c -I /usr/local/include
+LFLAGS = $(OPTIM) $(LFLTK)
+
+.SUFFIXES:	.cxx .o .h
+
+.cxx.o:
+	$(CXX) $(CFLAGS) $< -o $@

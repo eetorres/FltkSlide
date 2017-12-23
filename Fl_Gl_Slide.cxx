@@ -73,9 +73,10 @@ Fl_Gl_Slide::Fl_Gl_Slide(int x,int y,int w,int h,const char *l) : Fl_Box(x,y,w,h
     int i, j, k;
     for(i=0;i<Nx;i++){
         for(j=0;j<Ny;j++){
-            for(k=0;k<Nz/3;k++) c(i,j,k)=0.90;
-            for(k=Nz/3;k<2*Nz/3;k++) c(i,j,k)=1.0;
-            for(k=2*Nz/3;k<Nz;k++) c(i,j,k)=0.75;
+            for(k=0;k<Nz;k++) c(i,j,k)=0.5*(float(j)/float(Ny))+0.5*(float(k)/float(Nz));//
+            //for(k=0;k<Nz/3;k++) c(i,j,k)=0.5*(float(j)/float(Ny))+0.5*(float(k)/float(Nz));//
+            //for(k=Nz/3;k<2*Nz/3;k++) c(i,j,k)=0.5*(float(j)/float(Ny))+0.5*(float(k)/float(Nz));//=1.0*(float(j)/float(Ny));
+            //for(k=2*Nz/3;k<Nz;k++) c(i,j,k)=0.5*(float(j)/float(Ny))+0.5*(float(k)/float(Nz));//=1.0*(float(k)/float(Nz));
         }
     }
 }
@@ -102,7 +103,7 @@ void Fl_Gl_Slide::draw_gl_box(void){
         {
            
            glBegin(GL_POLYGON);
-           glColor3f( c(i,k,j), 0.0, 0.0 );
+           glColor3f( c(i,0,j), c(0,k,j), c(i,k,0) );
            glVertex3f(  posx+data_step, posy, -half_side );            // P1
            glVertex3f(  posx+data_step,  posy+data_step, -half_side ); // P2
            glVertex3f( posx,  posy+data_step, -half_side );            // P3

@@ -1,4 +1,4 @@
 FltkSlide
 =========
 
-<img src="https://github.com/eetorres/bpanna/blob/master/img/main.png?raw=true" alt="Main GUI"> 
+<img src="https://github.com/eetorres/FltkSlide/blob/master/main.png?raw=true" alt="Main GUI"> 
